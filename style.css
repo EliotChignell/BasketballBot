@@ -87,10 +87,10 @@ td {
 
 h1 {
     /*font-size: clamp(2.5vw, 40px, 40px);*/
-    font-size: 40px;
+    font-size: 35px;
     font-family: "Syne-Semibold";
     margin-bottom: 0px;
-    bottom: 15px;
+    bottom: 17px;
     position: relative;
     margin-top: 5px;
     display: inline-block;
