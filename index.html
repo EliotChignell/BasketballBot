@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>BasketballBot</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+
+
+    <body>
+
+        <div class="header">
+            <img src="./images/logo.png" id="logo"><h1>BasketballBot</h1>
+        </div>
+
+        <div class="content">
+            <br>
+
+            <div class="buttons">
+                <center><b>
+                    <a class="button" href="https://discord.com/api/oauth2/authorize?client_id=544017840760422417&permissions=534723816512&scope=applications.commands%20bot">Add to Discord</a>
+                    <a class="button" href="https://patreon.com/basketballbot">Donate</a>
+                    <a class="button" href="https://discord.gg/j3jkGdEVxD">Support Server</a>
+                    <a class="button" href="#commands">Commands</a>
+                </center></b>
+            </div>
+
+            <center>
+            <a href="https://top.gg/bot/544017840760422417">
+                <img src="https://top.gg/api/widget/servers/544017840760422417.svg?noavatar=true">
+            </a>
+
+            <a href="https://top.gg/bot/544017840760422417">
+                <img src="https://top.gg/api/widget/upvotes/544017840760422417.svg?noavatar=true">
+            </a>
+
+            <a href="https://top.gg/bot/544017840760422417">
+                <img src="https://top.gg/api/widget/status/544017840760422417.svg?noavatar=true">
+            </a>
+            </center>
+
+            <div class="about">
+                <h2>BasketballBot (formerly NBABot) is a Discord bot dedicated to NBA scores, statistics, news, and information.</h2>
+                <h3><i>Made by <a href="https://chig.js.org">Eliot Chignell (@eliot1)</a> with contributions from Justin Levine.</i></h3s>
+            </div>
+
+            <br>    
+
+            <div class="examples">
+                <center>
+                <img class="example" src="./images/scores2.png">
+                <img class="example" src="./images/player-stats2.png">
+                <img class="example" src="./images/compare-players2.png">
+                <img class="example" src="./images/standings.png">
+                </center>
+            </div>
+
+            <br>
+
+            <div class="commands">
+                <h2 id="commands">Commands</h2>
+                <h3>NBA commands</h3>
+                <table class="nba commands">
+                </table>
+                <h3>Betting commands</h3>
+                <p><b>Note:</b> BasketballBot's simulated betting system uses no real money, and can be disabled on a user or server basis.</p>
+                <table class="betting commands">
+                </table>
+                <h3>Other commands</h3>
+                <table class="other commands">
+                </table>
+            </div>
+
+            <h2>Interested?</h2>
+            <a class="button" href="https://discord.com/api/oauth2/authorize?client_id=544017840760422417&permissions=534723816512&scope=applications.commands%20bot">Add to Discord</a>
+
+            <br><br>
+
+            <hr>
+
+            <br>
+
+            <a href="">Terms of Service</a><br>
+            <a href="">Privacy Policy</a>
+
+            <div class="contact">
+                <h2>Contact</h2>
+                <ul>
+                    <li>Email: chignelleliot@gmail.com</li>
+                    <li>Discord: <a href="https://discord.com/users/401649168948396032">@eliot1</a></li>
+                    <li>GitHub: <a href="https://github.com/EliotChignell">EliotChignell</a></li>
+                </ul>
+            </div>
+
+            <p>Website made by Eliot Chignell</p>
+
+            <br>
+        </div>
+
+        <script>
+            const commands = {
+                "betting": {
+                    "balance": "Get your balance in the simulated bettings system.",
+                    "bet": "Bet on a certain team to win",
+                    "bets": "View all your placed bets which are yet to be claimed.",
+                    "claim": "If your bets haven't automatically been claimed, use this command.",
+                    "leaderboard": "Get the standings for either your server or around the world.",
+                    "odds": "Get odds for NBA games for the simulated betting system.",
+                    "parlay": "Bet on the outcomes of multiple games and get combined odds if the bets are all correct",
+                    "prop": "Bet an amount on an over/under for a player's stats on a given game.",
+                    "rbet": "Retract a bet you've placed if the game has not yet started.",
+                    "reset-balance": "If you are at $0 and have no placed bets, use this to reset back to $10. (until voting added back)",
+                    "weekly": "If you are a donator, you can get $20 in the simulated betting system per week with this command."
+                },
+                "nba": {
+                    "all-time-leaders": "Find the NBA all-time leaders of a particular stat category.",
+                    "boxscore": "Returns a team's boxscore from today or a specified date.",
+                    "compare-players": "Visually compare the regular seasons stats of two players.",
+                    "franchise-leaders": "Get franchise leaders for a certain team.",
+                    "league-leaders": "Get the current or past leaders of a specific statistic.",
+                    "lineup-stats": "Get the basic stats for a team's top lineup combinations.",
+                    "news": "Get the latest basketball headlines from ESPN.",
+                    "player-info": "Get basic information, and NBA awards of a specific player.",
+                    "player-stats": "Get a player's stats from any season.",
+                    "roster": "Get the roster of a specific team for this season or for another specified season.",
+                    "schedule": "Get a team's upcoming/previous games sorted a monthly basis.",
+                    "scores": "Get NBA scores from today or a specified date.",
+                    "shotchart": "Get a specific player's shotchart for this current season or another specified season.",
+                    "standings": "Get the current or past standings by conference/division.",
+                    "team-info": "Get basic info on a team, as well as current injuries.",
+                    "team-rankings": "Get the league rankings for a particular statistic.",
+                    "team-stats": "Get basic statistics for an NBA team.",
+                    "teams": "Get the names and tricodes for all NBA teams.",
+                    "transactions": "View the latest player transactions"
+                },
+                "other": {
+                    "ad-free-servers": "(Donator only) Remove ads from your server",
+                    "auto-scores": "(Finals MVP donator only) choose where you want your automated scores to be",
+                    "bot-stats": "Shows BasketballBot's Stats",
+                    "donate": "Find out more about becoming a patron to BasketballBot's development.",
+                    "help": "BasketballBot's commands and other useful info",
+                    "img": "Retrieve images from your server.",
+                    "img-add": "Add images to your server with a name and an attached image.",
+                    "img-delete": "Delete an image from your server. Use /imgs to see the images on your server.",
+                    "imgs": "Show the images registered for your server.",
+                    "settings": "BasketballBot settings",
+                    "vote": "Get the link to vote for BasketballBot on top.gg for $10 in the simulated betting system."
+                }
+            };
+            let tables = [document.querySelector(`.nba`), document.querySelector(`.betting`), document.querySelector(`.other`)];
+            let all = [`nba`, `betting`, `other`];
+            for (var i = 0; i < all.length; i++) {
+                let table = document.querySelector(`.${all[i]}`);
+                let counter = 0;
+                for (var command in commands[all[i]]) {
+                    table.innerHTML += `<tr${counter % 2 == 0 ? ` background-color="black"` : ``}><td>/${command}</td><td>${commands[all[i]][command]}</td></tr>`;
+                    counter++;
+                }
+            }
+        </script>
+    </body>
+</html>
