@@ -100,62 +100,23 @@
         </div>
 
         <script>
-            const commands = {
-                "betting": {
-                    "balance": "Get your balance in the simulated bettings system.",
-                    "bet": "Bet on a certain team to win",
-                    "bets": "View all your placed bets which are yet to be claimed.",
-                    "claim": "If your bets haven't automatically been claimed, use this command.",
-                    "leaderboard": "Get the standings for either your server or around the world.",
-                    "odds": "Get odds for NBA games for the simulated betting system.",
-                    "parlay": "Bet on the outcomes of multiple games and get combined odds if the bets are all correct",
-                    "prop": "Bet an amount on an over/under for a player's stats on a given game.",
-                    "rbet": "Retract a bet you've placed if the game has not yet started.",
-                    "reset-balance": "If you are at $0 and have no placed bets, use this to reset back to $10. (until voting added back)",
-                    "weekly": "If you are a donator, you can get $20 in the simulated betting system per week with this command."
-                },
-                "nba": {
-                    "all-time-leaders": "Find the NBA all-time leaders of a particular stat category.",
-                    "boxscore": "Returns a team's boxscore from today or a specified date.",
-                    "compare-players": "Visually compare the regular seasons stats of two players.",
-                    "franchise-leaders": "Get franchise leaders for a certain team.",
-                    "league-leaders": "Get the current or past leaders of a specific statistic.",
-                    "lineup-stats": "Get the basic stats for a team's top lineup combinations.",
-                    "news": "Get the latest basketball headlines from ESPN.",
-                    "player-info": "Get basic information, and NBA awards of a specific player.",
-                    "player-stats": "Get a player's stats from any season.",
-                    "roster": "Get the roster of a specific team for this season or for another specified season.",
-                    "schedule": "Get a team's upcoming/previous games sorted a monthly basis.",
-                    "scores": "Get NBA scores from today or a specified date.",
-                    "shotchart": "Get a specific player's shotchart for this current season or another specified season.",
-                    "standings": "Get the current or past standings by conference/division.",
-                    "team-info": "Get basic info on a team, as well as current injuries.",
-                    "team-rankings": "Get the league rankings for a particular statistic.",
-                    "team-stats": "Get basic statistics for an NBA team.",
-                    "teams": "Get the names and tricodes for all NBA teams.",
-                    "transactions": "View the latest player transactions"
-                },
-                "other": {
-                    "ad-free-servers": "(Donator only) Remove ads from your server",
-                    "auto-scores": "(Finals MVP donator only) choose where you want your automated scores to be",
-                    "bot-stats": "Shows BasketballBot's Stats",
-                    "donate": "Find out more about becoming a patron to BasketballBot's development.",
-                    "help": "BasketballBot's commands and other useful info",
-                    "img": "Retrieve images from your server.",
-                    "img-add": "Add images to your server with a name and an attached image.",
-                    "img-delete": "Delete an image from your server. Use /imgs to see the images on your server.",
-                    "imgs": "Show the images registered for your server.",
-                    "settings": "BasketballBot settings",
-                    "vote": "Get the link to vote for BasketballBot on top.gg for $10 in the simulated betting system."
-                }
+            // 18/04/24 dump from BasketballBot
+            const commands = {"NBA commands":[{"name":"bracket","description":"Get the current NBA playoff bracket"},{"name":"guess-player","description":"Given a player's basic statistics, guess who they are!"},{"name":"news","description":"Get the latest basketball headlines from ESPN."},{"name":"roster","description":"Get the current roster of an NBA team."},{"name":"schedule","description":"Get a specific team's upcoming and previous schedule. Use /scores for all teams."},{"name":"teams","description":"Get a list of all current NBA teams."},{"name":"boxscore","description":"Get the boxscore of a game"},{"name":"game-log","description":"Get the latest basic players of any NBA player."},{"name":"scores","description":"Get scores"},{"name":"standings","description":"Get the current season standings for all NBA teams, or those in a specific conference or division."},{"name":"compare-players","description":"Choose any 2 current players to compare their per-game regular season stats."},{"name":"league-leaders","description":"Get the current league leaders of certain stat categories."},{"name":"player-stats","description":"Get the average/total statistics for any player this season or in another specified season"},{"name":"search","description":"Look for players with games or averages of certain stats."}],"Betting commands":[{"name":"balance","description":"Get your current balance and other betting stats."},{"name":"bet","description":"Bet on either a player or game using BasketballBot points."},{"name":"bets","description":"Get all your placed, and/or previous bets."},{"name":"claim","description":"Claim any bets from games that have finished."},{"name":"leaderboard","description":"Get the leaderboard of users in your server or globally."},{"name":"odds","description":"Get the current odds for games today, or on another date."},{"name":"parlay","description":"Combine multiple bets into one for greater risk and reward."},{"name":"retract","description":"Retract a bet or parlay."},{"name":"weekly","description":"Only for donators - get 20 or 50 points in the simulated betting system per week."}],"Other commands":[{"name":"auto-scores","description":"Either start or stop automatic score messages in the current channel. Only for Finals MVP donators."},{"name":"donate","description":"Information about donation"},{"name":"help","description":"Get a list of basic commands and other useful info about BasketballBot"},{"name":"img-add","description":"Add images to your server"},{"name":"img-delete","description":"Delete an image from your server."},{"name":"img","description":"Get images from your server"},{"name":"imgs","description":"Get a list of images from your server."},{"name":"settings","description":"Change your preferences."},{"name":"vote","description":"Get the link to vote for BasketballBot."}]};
+
+            // Temporary bodge
+            const mapper = {
+                'nba': 'NBA commands',
+                'betting': 'Betting commands',
+                'other': 'Other commands'
             };
+
             let tables = [document.querySelector(`.nba`), document.querySelector(`.betting`), document.querySelector(`.other`)];
             let all = [`nba`, `betting`, `other`];
             for (var i = 0; i < all.length; i++) {
                 let table = document.querySelector(`.${all[i]}`);
                 let counter = 0;
-                for (var command in commands[all[i]]) {
-                    table.innerHTML += `<tr${counter % 2 == 0 ? ` background-color="black"` : ``}><td>/${command}</td><td>${commands[all[i]][command]}</td></tr>`;
+                for (let command of commands[mapper[all[i]]]) {
+                    table.innerHTML += `<tr${counter % 2 == 0 ? ` background-color="black"` : ``}><td>/${command.name}</td><td>${command.description}</td></tr>`;
                     counter++;
                 }
             }
